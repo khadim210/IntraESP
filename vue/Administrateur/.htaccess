@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /Application INTRAESP 2.0/
+
+RewriteRule ^index.php?$
