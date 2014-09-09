@@ -26,6 +26,24 @@ Class CoreObject{
 	{
 		return $this->bdd;
 	}
+	
+	public function insert($columns="",$values="") {
+
+		$table = $this->table;
+
+		$sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES ('.$values.')';
+		
+		try {
+						
+			$request = $this->bdd->query($sql) ;
+						
+			$request->closeCursor();
+			
+		} catch (Exception $e) {
+			
+			die($e->getMessage());
+		}
+	}
 
 	// retourne la valeur d'un attribue donnée
 	public function __get($attributeName)

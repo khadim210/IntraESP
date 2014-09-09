@@ -14,36 +14,50 @@
 		</ul>
 		
          <div class="tab-content">
-                  <div class="tab-pane active" id="tab1">
-
-                  <div>
-					<select>
+                  <?php
 					
-					<?php for ($i = 0; $i < count($donne[0]); $i++) { ?>
-					
-					<option value="<?php $donne[0][$i]['idAgent'] ?>" > <?php echo $donne[0][$i]['nom'] ?> <?php echo $donne[0][$i]['prenom'] ?> </option>
-					
-					<?php	
-					}	
-					?>
-										
-					</select>
-					<div class="pull-right">
-					<button class="btn btn-primary"> Affecter</button>
-					</div>
-				</div>
-			</div>
-					<?php
-					
-					for ($i = 1; $i <= count($Service)-1; $i++) {
+					for ($i = 0; $i <= count($Service)-1; $i++) {
 							
 						$y = $i+1;
+						
+						if ($i == 0) {
+							$active = 'active';
+						}else{
+							$active = '';
+						}
 							
-						echo '<div class="tab-pane" id="tab'.$y.'">';
+						echo '<div class="tab-pane '.$active.'" id="tab'.$y.'">';
 					
 					?>
+					<form action="../controleur/Affectation_Controller.php?control=Service" method="POST">
 					<div>
-					<select>
+					
+					<!-- Debut modal -->
+					
+					<div id="modalService<?php echo $y ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 <h3>Affectation Chef de Service</h3>
+					</div>
+					 <div class="modal-body" id="myModalLabel">
+						<p>L'Agent selectionné sera Affecté au poste de Chef de <strong> <?php echo $Service[$i] ?> </strong> avec les privilèges et responsabilités qui accompagnent ce poste !</p>
+					 </div>
+					
+					<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+					<button type="submit" class="btn btn-primary"  >Appliquer</button>
+					</div>	
+						
+											 
+					
+					</div>
+					
+					<!-- Fin modal -->
+					
+					
+					
+					
+					<select name='idAgentServ'>
 					
 					<?php for ($z = 0; $z < count($donne[$i]); $z++) { ?>
 					
@@ -56,9 +70,10 @@
 					</select>
 					
 					<div class="pull-right">
-					<button class="btn btn-primary"> Affecter</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#modalService<?php echo $y ?>"> Affecter</button>
 					</div>
-					</div>		
+					</div>
+					</form>		
 					<?php		
 						echo '</div>';
 					}

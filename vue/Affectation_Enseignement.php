@@ -12,6 +12,12 @@ require_once ('../lib/autoload2.inc.php');
 if (isset($_SESSION['idAgent']) ) {
 
 	$a= new Agent($_SESSION['idAgent']);
+	
+	$r= new Role();
+	
+	$libAgentClasse = $r->RequestFetched('idAgent ='.$_SESSION['idAgent'],'classe');
+	
+	$AgentClasse = "'".$libAgentClasse."'";
 
 	$struct = new Structure();
 	
@@ -68,7 +74,7 @@ if (isset($_SESSION['idAgent']) ) {
 	// Récuperation pats
 	
 
-	$condition = "f.idDepartement = ".$a->__get('idStructure');
+	$condition = "f.idDepartement = ".$a->__get('idStructure')." AND (a.idStructure = f.idDepartement)";
 	
 	$D = $a->UniversalRequest($condition, 'agents a , formation f','DISTINCT idFormation,libFormation');
 	
@@ -90,7 +96,25 @@ if (isset($_SESSION['idAgent']) ) {
 	
 	foreach ($idFormation as $value) {
 		
-		$request = '(f.idFormation = '.$value.')';
+//		$request = 'c.idFormation = f.idFormation AND (f.idFormation = '.$value.')';
+//		$table = 'classe c , formation f';
+//		$D1 = $a->UniversalRequest($request,$table ,'idClasse,libClasse'); // C'est ici que cela bloque
+		
+//		array_push($ClasseData, $D1);
+		
+	}
+	
+	foreach ($idFormation as $key => $value) {
+//		$request = 'c.idFormation = f.idFormation AND (c.idFormation = '.$value.')';
+//		$table = 'classe c , formation f';
+//		$D1 = $a->UniversalRequest($request,$table ,'idClasse,libClasse'); // C'est ici que cela bloque
+		
+//		array_push($ClasseData, $D1);
+	}
+	
+	for ($i = 0; $i < count($idFormation); $i++) {
+		
+		$request = 'c.idFormation = f.idFormation AND (c.idFormation = '.$idFormation[$i].')AND (libClasse ='.$AgentClasse.')';
 		$table = 'classe c , formation f';
 		$D1 = $a->UniversalRequest($request,$table ,'idClasse,libClasse'); // C'est ici que cela bloque
 		
@@ -100,15 +124,24 @@ if (isset($_SESSION['idAgent']) ) {
 	
 	
 	
-	
 	$idClasse = array();
 	$Classe = array();
 	
 	for ($i = 0; $i < count($D1); $i++) {
 		
-		array_push($idClasse, $D1[$i]['idClasse']);
-		array_push($Classe, $D1[$i]['libClasse']);
+		//array_push($idClasse, $D1[$i]['idClasse']);
+		//array_push($Classe, $D1[$i]['libClasse']);
 		
+	}
+	
+	for ($i = 0; $i < count($ClasseData); $i++) {
+		
+		for ($y = 0; $y < count($ClasseData[$i]); $y++) {
+
+			array_push($idClasse, $ClasseData[$i][$y]['idClasse']);
+			array_push($Classe, $ClasseData[$i][$y]['libClasse']);
+			
+		}
 	}
 
 	
@@ -127,6 +160,8 @@ if (isset($_SESSION['idAgent']) ) {
 		
 		array_push($MatiereData1, $D2);
 	}
+	
+	
 	
 	foreach ($idClasse as $value) {
 	
@@ -177,7 +212,7 @@ $doc->header($a->__get('nom'));
 
 $doc->Alert("success", "Bravo ", "Vous vous êtes connecté avec succes !");
 
-$doc->breadcrumb($libDept);
+$doc->breadcrumb($libDept,$libAgentClasse);
 
 $doc->beginRow();
 
@@ -205,14 +240,17 @@ $header = array('Matière','CM','TD','TP','CM','TD','TP');
 
 include_once ('../vue/Affectation_Enseignement_vue1.php');
 
-//print_r($ClasseData[0]);
+//print_r(($ClasseData[2]));
+//print_r(count($ClasseData));
 //print_r($idClasse);
 //print_r(($MatiereData[0]));
-print_r(count($agent_per));
+//print_r($idFormation);
 //echo "idFormation :";
 //print_r($idFormation);
 //echo "D1 :";
 //print_r($D1);
+//print_r($AgentClasse);
+
 
 
 $doc->endBigSection();
@@ -227,14 +265,14 @@ $header = array('Matière','CM','TD','TP','CM','TD','TP');
 
 include_once ('../vue/Affectation_Enseignement_vue.php');
 
-//print_r($ClasseData[0]);
+//print_r($ClasseData);
 //print_r($idClasse);
 //print_r(($MatiereData[0]));
-print_r(count($agent_per));
+//print_r(count($agent_per));
 //echo "idFormation :";
 //print_r($idFormation);
 //echo "D1 :";
-//print_r($D1);
+//print_r($D);
 
 
 $doc->endBigSection();
@@ -253,7 +291,7 @@ include_once ('../vue/Affectation_Enseignement_vue2.php');
 //print_r($ClasseData[0]);
 //print_r($idClasse);
 //print_r(($MatiereData[0]));
-print_r(count($agent_per));
+//print_r(count($agent_per));
 //echo "idFormation :";
 //print_r($idFormation);
 //echo "D1 :";

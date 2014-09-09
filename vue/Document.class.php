@@ -139,6 +139,9 @@ class Document{
                   </li>
                 </ul>
               </li>
+			<li class="">
+               <a href="#">Mon Profil</a>
+            </li>
             </ul>
           </div>
           <p class="navbar-text pull-right">  <i class="icon-user"></i>  '.$AgentName.' <a href="../controleur/Deconnexion_Controller.php?control=logout"> <button class=""><i class="icon-off"></i></button> </a> </p>
@@ -189,6 +192,9 @@ class Document{
                   </li>
                 </ul>
               </li>
+			<li class="">
+                <a href="#">Mon Profil</a>
+              </li>
             </ul>
           </div>
           <p class="navbar-text pull-right">  <i class="icon-user"></i>  '.$AgentName.' <a href="../controleur/Deconnexion_Controller.php?control=logout"> <button class=""><i class="icon-off"></i></button> </a> </p>
@@ -221,7 +227,7 @@ class Document{
                 <a href="TableauDeBord.php">Tableau de Bord</a>
               </li>
               <li class="">
-                <a href="Affectation_Enseignement.php">Affectation d\'Enseignement</a>
+                <a href="Affectation_ResponsablePedagogique.php">Responsable Pédagogique</a>
               </li>
               <li class="">
                 <a href="Vacation.php">Vacation</a>
@@ -239,6 +245,8 @@ class Document{
                 </ul>
               </li>
 
+					
+					
                <li class="">
                 <a href="#">Mon Profil</a>
               </li> 
@@ -277,7 +285,7 @@ class Document{
                 <a href="TableauDeBord.php">Tableau de Bord</a>
               </li>
                             <li class="">
-                <a href="Affectation.php">Affectation d\'Enseignement</a>
+                <a href="Affectation_Enseignement.php">Affectation d\'Enseignement</a>
               </li>
               <li class="">
                 <a href="Vacation.php">Vacation</a>
@@ -429,15 +437,6 @@ class Document{
             
           </li>
 
-          
-
-
-
-          <li>
-            <a href="#">
-            <i class="icon-chevron-right"></i> Chef de Départements
-            </a>
-          </li>
 
           <li>
             <a href="Affectation.php">
@@ -560,12 +559,7 @@ class Document{
 
 
 
-          <li>
-            <a href="#">
-            <i class="icon-chevron-right"></i> Responsables Pédagogiques
-            </a>
-          </li>
-
+       
           <li>
             <a href="#">
             <i class="icon-chevron-right"></i> Affectations
@@ -951,7 +945,7 @@ function endTabbable() {
         </div> <!-- Fin  Calendrier -->';
 	}
 	
-public function breadcrumb($name=null) {
+public function breadcrumb($name=null,$name2=null) {
 		switch ($this->userLevel) {
 			case 4:
 		echo '<div class="container">
@@ -960,7 +954,8 @@ public function breadcrumb($name=null) {
         <li><a href="#">Acceuil</a> <span class="divider">/</span> </li>
         <li><a href="#">Direction</a> <span class="divider">/</span> </li>
         <li><a href="#">Direction des Etudes</a> <span class="divider">/</span> </li>
-        <li class="active">Formation</li>
+		<li><a href="#">'.$name.'</a> <span class="divider">/</span> </li>
+        <li class="active">'.$name2.'</li>
       </ul>
     </div>';
 			;

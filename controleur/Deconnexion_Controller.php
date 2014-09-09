@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once ('../lib/autoload2.inc.php');
 require_once('Controller.class.php');
 
@@ -19,9 +20,9 @@ class Deconnexion_Controller extends Controller {
 		
 		session_destroy();
 		
-		$this->destination="index.php";
+		$this->destination="";
 		
-		$this->repertoire = "";
+		$this->repertoire = ".";
 					
 		
 			

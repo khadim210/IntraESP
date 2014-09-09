@@ -2,6 +2,8 @@
 
 session_start();
 
+if (isset($_SESSION['idAgent'])) { // debut session condition
+
 require_once ('../vue/Document.class.php');
 
 require_once ('../lib/autoload2.inc.php');
@@ -68,7 +70,13 @@ $doc->begin();
 
 $doc->header($a->__get('nom'));
 
-$doc->Alert("success", "Bravo ", "Vous vous êtes connecté avec succes !");
+if (isset($_GET['mission'])) {
+	if ($_GET['mission'] == 'success') {
+		$doc->Alert("warning", "Félicitation ", "Affectation effectué avec succès !");
+	}
+}
+
+
 
 $doc->breadcrumb();
 
@@ -115,12 +123,13 @@ $donne = array();
 
 foreach ($idLaboratoire as $value) {
 	
-	$request = '(s.idStructure = a.idStructure) AND( a.idStructure = '.$value.')';
+	$request = '(s.idStructure = a.idStructure) AND( a.idStructure = '.$value.') OR a.idTypeAgent = 1';
 	$table = "agents a, structure s";
-	$data =$a->UniversalRequest($request,$table,'idAgent,nom,prenom');
+	$data =$a->UniversalRequest($request,$table,'DISTINCT idAgent,nom,prenom');
 	
-	array_push($donne, $data);
+	array_push($donne, $data);	
 }
+
 
 include_once ('../vue/Affectation_Laboratoire_vue.php');
 
@@ -137,9 +146,9 @@ $donne = array();
 
 foreach ($idService as $value) {
 	
-	$request = '(s.idStructure = a.idStructure) AND( a.idStructure = '.$value.')';
+	$request = '(s.idStructure = a.idStructure) AND( a.idStructure = '.$value.') OR a.idTypeAgent = 1';
 	$table = "agents a, structure s";
-	$data =$a->UniversalRequest($request,$table,'idAgent,nom,prenom');
+	$data =$a->UniversalRequest($request,$table,'DISTINCT idAgent,nom,prenom');
 	
 	array_push($donne, $data);
 }
@@ -154,6 +163,11 @@ $doc->endRow();
 
 
 $doc->end();
+
+
+}else{
+	header('Location: ../');
+} // Fin session Condition 
 
 
 ?>

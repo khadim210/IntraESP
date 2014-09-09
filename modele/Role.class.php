@@ -14,6 +14,7 @@ class Role extends CoreObject
 private	$idRole;
 private	$idAgent;
 private $idTypeRole;
+private $Specification;
 
 protected $table="role";
 
