@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+if (isset($_SESSION['idAgent'])) { // debut session condition
+
 require_once ('../vue/Document.class.php');
 
 require_once ('../lib/autoload2.inc.php');
@@ -43,3 +45,7 @@ $doc->endBigSection();
 $doc->endRow();
 
 $doc->end();
+
+}else{
+	header('Location: ../');
+} // Fin session Condition

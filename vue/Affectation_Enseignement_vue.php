@@ -1,3 +1,6 @@
+<?php if (isset($Classe[0])) { ?>
+
+
 <div class="tabbable">
             <ul class="nav nav-tabs">
 			<li class="active"><a href="#tabS2_1" data-toggle="tab"><?php echo  $Classe[0] ?></a></li>
@@ -152,4 +155,4 @@
 		</div> <!-- Fin tab-content -->
 		
 	</div> <!-- Fin Tabbable -->
-    
+<?php } ?>    

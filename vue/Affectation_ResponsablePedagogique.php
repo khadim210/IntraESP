@@ -12,12 +12,6 @@ require_once ('../lib/autoload2.inc.php');
 if (isset($_SESSION['idAgent']) ) {
 
 	$a= new Agent($_SESSION['idAgent']);
-	
-	$r= new Role();
-	
-	$libAgentClasse = $r->RequestFetched('idAgent ='.$_SESSION['idAgent'],'classe');
-	
-	$AgentClasse = "'".$libAgentClasse."'";
 
 	$struct = new Structure();
 	
@@ -114,7 +108,7 @@ if (isset($_SESSION['idAgent']) ) {
 	
 	for ($i = 0; $i < count($idFormation); $i++) {
 		
-		$request = 'c.idFormation = f.idFormation AND (c.idFormation = '.$idFormation[$i].')AND (libClasse ='.$AgentClasse.')';
+		$request = 'c.idFormation = f.idFormation AND (c.idFormation = '.$idFormation[$i].')';
 		$table = 'classe c , formation f';
 		$D1 = $a->UniversalRequest($request,$table ,'idClasse,libClasse'); // C'est ici que cela bloque
 		
@@ -210,9 +204,14 @@ $doc->begin();
 
 $doc->header($a->__get('nom'));
 
-$doc->Alert("success", "Bravo ", "Vous vous êtes connecté avec succes !");
+if (isset($_GET['mission'])) {
+	if ($_GET['mission'] == 'success') {
+		$doc->Alert("warning", "Félicitation ", "Affectation effectué avec succès !");
+	}
+}
 
-$doc->breadcrumb($libDept,$libAgentClasse);
+
+$doc->breadcrumb($libDept);
 
 $doc->beginRow();
 
@@ -230,7 +229,7 @@ $doc->menu();
 $Data = 6;
 
 
-$doc->beginBigSection("Affectation Enseignement Premier Semestre");
+$doc->beginBigSection("Affectation Responsable Pédagogique");
 
 $header = array('Matière','CM','TD','TP','CM','TD','TP');
 
@@ -238,7 +237,7 @@ $header = array('Matière','CM','TD','TP','CM','TD','TP');
 
 //print_r($MatiereData[0][0]['libMatiere']);
 
-include_once ('../vue/Affectation_Enseignement_vue1.php');
+include_once ('../vue/Affectation_ResponsablePedagogique_vue.php');
 
 //print_r(($ClasseData[2]));
 //print_r(count($ClasseData));
@@ -249,56 +248,13 @@ include_once ('../vue/Affectation_Enseignement_vue1.php');
 //print_r($idFormation);
 //echo "D1 :";
 //print_r($D1);
-//print_r($AgentClasse);
 
 
 
 $doc->endBigSection();
 
-$doc->beginBigSection("Affectation Enseignement Second Semestre");
-
-$header = array('Matière','CM','TD','TP','CM','TD','TP');
-
-//$doc->Table("striped", $header,$MatiereData[0]);
-
-//print_r($MatiereData[0][0]['libMatiere']);
-
-include_once ('../vue/Affectation_Enseignement_vue.php');
-
-//print_r($ClasseData);
-//print_r($idClasse);
-//print_r(($MatiereData[0]));
-//print_r(count($agent_per));
-//echo "idFormation :";
-//print_r($idFormation);
-//echo "D1 :";
-//print_r($D);
 
 
-$doc->endBigSection();
-
-
-$doc->beginBigSection("Affectation Enseignement Premier et Second Semestre");
-
-$header = array('Matière','CM','TD','TP','CM','TD','TP');
-
-//$doc->Table("striped", $header,$MatiereData[0]);
-
-//print_r($MatiereData[0][0]['libMatiere']);
-
-include_once ('../vue/Affectation_Enseignement_vue2.php');
-
-//print_r($ClasseData[0]);
-//print_r($idClasse);
-//print_r(($MatiereData[0]));
-//print_r(count($agent_per));
-//echo "idFormation :";
-//print_r($idFormation);
-//echo "D1 :";
-//print_r($D1);
-
-
-$doc->endBigSection();
 
 
 

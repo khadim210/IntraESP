@@ -17,12 +17,12 @@ class Per extends Agent
 private $bdd;
 protected $table = "agent_per";
 
-	function __construct(){
-	
-		$base= new Connect();
-		$this->bdd= $base->getBdd();
+function __construct(){
 
-	}
+	parent::__construct();
+
+
+}
 
 
 

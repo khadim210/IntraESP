@@ -14,36 +14,48 @@
 		</ul>
 		
          <div class="tab-content">
-                  <div class="tab-pane active" id="tablab1">
-
-                  <div>
-					<select>
+                  	<?php
 					
-					<?php for ($i = 0; $i < count($donne[0]); $i++) { ?>
-					
-					<option value="<?php $donne[0][$i]['idAgent'] ?>" > <?php echo $donne[0][$i]['nom'] ?> <?php echo $donne[0][$i]['prenom'] ?> </option>
-					
-					<?php	
-					}	
-					?>
-										
-					</select>
-					<div class="pull-right">
-					<button class="btn btn-primary"> Affecter</button>
-					</div>
-				</div>
-			</div>
-					<?php
-					
-					for ($i = 1; $i <= count($Laboratoire)-1; $i++) {
+					for ($i = 0; $i <= count($Laboratoire)-1; $i++) {
 							
 						$y = $i+1;
+						
+						if ($i == 0) {
+							$active = 'active';
+						}else{
+							$active = '';
+						}
 							
-						echo '<div class="tab-pane" id="tablab'.$y.'">';
+						echo '<div class="tab-pane '.$active.'" id="tablab'.$y.'">';
 					
 					?>
+					<form action="../controleur/Affectation_Controller.php?control=Laboratoire" method="POST" >
 					<div>
-					<select>
+					
+					<!-- Debut modal -->
+					
+					<div id="modalLaboratoire<?php echo $y ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					 <h3>Affectation Chef de Laboratoire</h3>
+					</div>
+					 <div class="modal-body" id="myModalLabel">
+						<p>L'Agent selectionné est Affecté au poste de Chef de <strong> <?php echo $Laboratoire[$i] ?> </strong> avec les privilèges et responsabilités qui accompagnent ce poste !</p>
+					 </div>
+					
+					<div class="modal-footer">
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Fermer</button>
+					<button type="submit" class="btn btn-primary"  >Appliquer</button>
+					</div>	
+						
+											 
+					
+					</div>
+					
+					<!-- Fin modal -->
+					
+					
+					<select name='idAgentLab'>
 					
 					<?php for ($z = 0; $z < count($donne[$i]); $z++) { ?>
 					
@@ -56,9 +68,13 @@
 					</select>
 					
 					<div class="pull-right">
-					<button class="btn btn-primary"> Affecter</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#modalLaboratoire<?php echo $y ?>"> Affecter</button>
 					</div>
-					</div>		
+					</div>
+					</form>
+					
+					
+							
 					<?php		
 						echo '</div>';
 					}
