@@ -31,44 +31,88 @@ class Authentificate_controller extends Controller
 	protected function execute()
 	{	
 
-		$this->destination = "vue.php?";
+		$control = $_GET['control'];
+		
+		switch ($control) {
+			case 'login':
 
-		$this->repertoire = "vue";
-
-		if (isset($_POST['login'])) {
-
-			$this->login = $_POST['login'];
-
+				$this->destination = "vue.php?";
+				
+				$this->repertoire = "vue";
+				
+				if (isset($_POST['login'])) {
+				
+					$this->login = $_POST['login'];
+				
+				}
+				
+				
+				$this->motdepasse = $_POST['motdepasse'];
+				
+				$prenom = substr($this->login, 0,1);
+				
+				$nom = substr($this->login, 2);
+				
+				
+				$a = new Agent();
+				
+				$prenom = $prenom.'%';
+				
+				$this->request ="prenom LIKE '".$prenom."' AND nom = '".$nom."' AND matricule= '".$this->motdepasse."'";
+				
+				$reponse = $a->Request($this->request,'idAgent');
+				
+				//$this->idAgent = $reponse[0]['idAgent'];
+				
+				$this->idAgent = $reponse[0]['idAgent'];
+				
+				
+				
+				$this->repost_data['login'] = $this->login;
+				
+				$this->repost_data['motdepasse'] = $this->motdepasse;
+				
+				$this->repost_data['idAgent'] = $this->idAgent;
+				
+				
+				
+				
+				
+			break;
+			
+			case 'vacation':
+				
+				$this->destination = "CahierDeTexte.php?";
+				
+				$this->repertoire = "vue";
+				
+				$this->motdepasse = $_POST['motdepasse'];
+				
+				$this->repost_data['motdepasse'] = $this->motdepasse;
+				
+				$r = new Role();
+				
+				$condition = "ClassePassword = '".$this->motdepasse."'";
+				
+				$select = "classe";
+				
+				$libClasse = $r->RequestFetched($condition,$select);
+				
+				$c = new Classe();
+				
+				$idClasse = $c->RequestFetched("libClasse ='".$libClasse."'",'idClasse');
+				
+				$this->repost_data['idClasse'] = $idClasse;
+				
+			break;	
+			
+			default:
+				;
+			break;
 		}
 		
-
-		$this->motdepasse = $_POST['motdepasse'];
-
-		$prenom = substr($this->login, 0,1);
-
-		$nom = substr($this->login, 2);
-
-
-		$a = new Agent();
 		
-		$prenom = $prenom.'%';
-
-		$this->request ="prenom LIKE '".$prenom."' AND nom = '".$nom."' AND matricule= '".$this->motdepasse."'";
-
-		$reponse = $a->Request($this->request,'idAgent');
-		
-		//$this->idAgent = $reponse[0]['idAgent'];
-		
-		$this->idAgent = $reponse[0]['idAgent'];
-	
-	
-	
-		$this->repost_data['login'] = $this->login;
-		
-		$this->repost_data['motdepasse'] = $this->motdepasse;
-		
-		$this->repost_data['idAgent'] = $this->idAgent;
-		
+				
 		
 
 		

@@ -17,16 +17,31 @@ if (isset($_SESSION['idAgent']) ) {
 	
 	$libAgentClasse = $r->RequestFetched('idAgent ='.$_SESSION['idAgent'],'classe');
 	
+	$_SESSION['Classe'] = $libAgentClasse;
+	
 	$AgentClasse = "'".$libAgentClasse."'";
 
 	$struct = new Structure();
 	
 	$idStructure = $a->__get('idStructure');
 	
+	$_SESSION['idStructure']= $idStructure;
+	
 	$request  = 'idStructure = '.$idStructure;
+	
+	$Ex = new AgentExterne();
+
+	$condition = "(x.idStructure = ".$idStructure." AND x.idAgent = a.idAgent)";
+	
+	$table = "agent_externe x,agents a";
+	
+	$select = "nom,prenom,x.idAgent";
+	
+	$Agent_Ex = $Ex->UniversalRequest($condition, $table,$select);
 	
 	$agent_per = $a->Request($request);
 	
+	$merge = array_merge($agent_per,$Agent_Ex);
 	// Récuperation pats
 	
 	switch ($idStructure) {
@@ -59,6 +74,7 @@ if (isset($_SESSION['idAgent']) ) {
 		
 	}
 
+	$_SESSION['Departement'] = $libDept;
 	// Récuperation Département
 	
 //	$condition = "`DEPT/SERVICE`=".$libDept;
@@ -210,9 +226,16 @@ $doc->begin();
 
 $doc->header($a->__get('nom'));
 
-$doc->Alert("success", "Bravo ", "Vous vous êtes connecté avec succes !");
+if (isset($_GET['mission'])) {
+	if ($_GET['mission'] == 'success') {
+		$doc->Alert("warning", "Félicitation ", "Affectation effectué avec succès !");
+	}
+}
 
-$doc->breadcrumb($libDept,$libAgentClasse);
+
+$doc->breadcrumb($_SESSION['Departement'],$_SESSION['Classe']);
+
+$doc->Alert("Danger", "Hint ", "Incrémenter pour augmenter l'heure affectée à un enseignant.");
 
 $doc->beginRow();
 
@@ -228,6 +251,7 @@ $doc->menu();
 //$Data = array();
 
 $Data = 6;
+
 
 
 $doc->beginBigSection("Affectation Enseignement Premier Semestre");
