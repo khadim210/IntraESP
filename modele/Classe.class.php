@@ -37,7 +37,22 @@ protected $table="classe";
 		
 		
 	}
-	// Avoir la valeur d'un champs sachant l'id 
+	// Avoir la valeur d'un champs sachant l'id
+
+	public function __get($attributeName)
+	{
+		parent::__get($attributeName);
+	
+		$request = $this->bdd->prepare("SELECT * FROM `classe` WHERE `idClasse`=?") or die(print_r($req->errorInfo()));
+	
+		$request -> execute(array($this->idClasse));
+	
+		$reponse = $request->fetch();
+	
+		return $reponse[$attributeName];
+	
+	}
+	
 	
 
 } // Fin de la classe structure

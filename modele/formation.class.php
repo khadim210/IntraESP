@@ -25,7 +25,20 @@ protected $table="formation";
 		$this->idFormation = $idFormation;
 	}
 
-
+	public function __get($attributeName)
+	{
+		parent::__get($attributeName);
+	
+		$request = $this->bdd->prepare("SELECT * FROM `".$this->table."` WHERE `idFormation`=?") or die(print_r($req->errorInfo()));
+	
+		$request -> execute(array($this->idFormation));
+	
+		$reponse = $request->fetch();
+	
+		return $reponse[$attributeName];
+	
+	}
+	
 	
 } // Fin de la classe structure
 

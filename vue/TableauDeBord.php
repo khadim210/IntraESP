@@ -29,7 +29,7 @@ $doc->header($a->__get("nom"));
 
 $doc->Alert("success", "Bravo", "Vous vous êtes connecté avec succès");
 
-$doc->breadcrumb();
+$doc->breadcrumb($_SESSION['Departement'],$_SESSION['Classe']);
 
 //$doc->beginRow();
 
@@ -60,6 +60,15 @@ switch ($a->getLevel()) {
 	$doc->beginSmallSection("Agent", $count);
 	;
 	break;
+	
+	case 4:
+		$request  = 'idStructure = '.$a->__get("idStructure");
+	
+		$count = $a->RequestFetched($request,'count(*)');
+	
+		$doc->beginSmallSection("Agent", $count);
+		;
+		break;
 	
 	default:
 		;

@@ -21,6 +21,11 @@ protected function execute(){
 		
 	$r = new Role();
 	
+	$af = new Affectation();
+	
+	$h = new Historique();
+	
+	$ag = new AgentExterne();
 		
 	switch ($_GET['control']) {
 		
@@ -32,6 +37,20 @@ protected function execute(){
 	$r->insert('idAgent,idTypeRole',''.$_POST['idAgentdept'].',3');
 	
 		break;
+		
+		case 'Externe':
+			$this->repertoire = 'vue';
+				
+			$this->destination = 'Enseignant_Externe.php?mission=success';
+		
+			$idAgent = $_POST['idAgentdept'];
+			
+			$idStructure = $_POST['idStructureDept'];
+			
+			$ag->insert('idAgent,idStructure',''.$idAgent.','.$idStructure);
+		
+		break;
+		
 		
 		case 'Laboratoire':
 			
@@ -71,6 +90,111 @@ protected function execute(){
 			
 		break;
 		
+		case 'Enseignement': // Affectation d'Enseignement
+				
+	$this->repertoire = 'vue';
+
+	$this->destination = 'Affectation_Enseignement.php?mission=success';
+		
+	$idAgent = $_POST['idAgent'];
+		
+	$idMatiere = $_POST['idMatiere'];
+	
+	if (isset($_POST['CM'])) {
+		$CM = $_POST['CM'];	
+	}else{
+		$CM = 0;
+	}
+	
+	if (isset($_POST['TP'])) {
+		$TP = $_POST['TP'];
+	}else{
+		$TP = 0;
+	}
+	
+	if (isset($_POST['TD'])) {
+		$TD = $_POST['TD'];
+	}else{
+		$TD = 0;
+	}
+		
+	
+			
+	$values = "".$idMatiere.",".$idAgent.",".$CM.",".$TP.",".$TD;
+
+	$af->insert('idMatiere,idAgent,CM,TP,TD',$values);
+	
+//	$r->insert('idAgent,idTypeRole,classe',$values);
+				
+		break;
+		
+		case 'Enseignant':
+				
+	$this->repertoire = 'vue';
+		
+	
+		
+	$idAffectation = $_POST['idAffectation'];
+		
+	$CM = $_POST['CM'];
+	
+	$TP = $_POST['TP'];
+
+	$TD = $_POST['TD'];
+	
+	$idMatiere = $_POST['idMatiere'];
+	
+	$idClasse = $_POST['idClasse'];
+	
+//	$libMois =  "".idate("Y")."'-'".idate("m") ;
+
+	$libJour =  "".date("d")."" ;
+	
+	$libMois =  "".date("m")."" ;
+	
+	$libAnnee =  "".date("Y")."" ;
+	
+	$idAgent = $_POST['idAgent'];
+	
+	$CMset = $_POST['CMAffecte']-$_POST['CM'];
+	
+	$TPset = $_POST['TPAffecte']-$_POST['TP'];
+	
+	$TDset = $_POST['TDAffecte']-$_POST['TD'];
+	
+		
+	if (isset($_POST['action'])) {
+		
+		if ($_POST['action']=='update') {
+			
+			$setting = "CM =".$CM.",TP =".$TP.",TD =".$TD."";
+			
+			$condition = "idAffectation =".$idAffectation."";
+			
+			$af->update($condition,$setting);
+			
+			$values = "".$idAgent.",".$idMatiere.",".$idClasse.",".$libJour.",".$libMois.",".$libAnnee.",".$CMset.",".$TPset.",".$TDset;
+			
+			$h->insert("idAgent,idMatiere,idCLasse,libJour,libMois,libAnnee,CM,TP,TD",$values);
+			
+			$this->destination = 'Enseignant.php?update=success';
+			
+		}
+		
+		if ($_POST['action']=='delete') {
+			
+			$condition = "idAffectation =".$idAffectation."";
+			
+			$af->delete($condition);
+			
+			$this->destination = 'Enseignant.php?demission=success';
+		}
+		
+	}
+					
+		break;		
+		
+		
 		default:
 			;
 		break;
@@ -92,15 +216,14 @@ if (isset($_GET['control'])){
 	echo '<br>' ;
 	echo 'POST :' ;
 	echo print_r($_POST) ;
-	if (isset($_POST['Classe'])) {
-	echo print $_POST['Classe']	;
-	}else{
-	echo 'Classe non défini';	
-	}
+	
 	
 	$aff = new Affectation_Controller();
 	
 	$aff->process();
+	
+	
+	
 }else {
 	echo "Houston we have a problem";
 }

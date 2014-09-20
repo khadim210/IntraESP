@@ -45,6 +45,49 @@ Class CoreObject{
 		}
 	}
 
+	
+	public function delete($condition) {
+	
+		$table = $this->table;
+	
+		$sql = 'DELETE FROM '.$table.'  WHERE ('.$condition.')';
+	
+		try {
+	
+			$request = $this->bdd->query($sql) ;
+	
+			$request->closeCursor();
+				
+		} catch (Exception $e) {
+				
+			die($e->getMessage());
+		}
+	}
+	
+	
+	
+	
+	public function update($condition="",$setting="") {
+	
+		$table = $this->table;
+	
+		
+		$sql = 'UPDATE '.$table.' SET '.$setting.' WHERE ('.$condition.')';
+	
+		try {
+	
+			$request = $this->bdd->query($sql) ;
+	
+			$request->closeCursor();
+				
+		} catch (Exception $e) {
+				
+			die($e->getMessage());
+		}
+	}
+	
+	
+	
 	// retourne la valeur d'un attribue donnée
 	public function __get($attributeName)
 	{

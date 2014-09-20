@@ -132,19 +132,40 @@ class Document{
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="3">Agents <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href=""><i class="icon-user"></i> Liste des Agents</a>
+                    <a href="#"><i class="icon-user"></i> Liste des Agents</a>
                   </li>
                   <li>
-                    <a href=""><i class="icon-search"></i> Recherche</a>
+                    <a href="#"><i class="icon-search"></i> Recherche</a>
                   </li>
                 </ul>
               </li>
 			<li class="">
-               <a href="#">Mon Profil</a>
+               <a href="Profil.php">Mon Profil</a>
             </li>
             </ul>
+					<ul class="nav pull-right">
+				<li class="dropdown">
+             		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">  <i class="icon-user"></i>  '.$AgentName.' <i class="caret"></i>  </a>
+              	 						
+			<ul class="dropdown-menu">
+             		<li>
+             		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
+             		</li>
+             		<li>
+             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		</li>
+             		<li class="divider"></li>
+             		<li>
+             		<a tabindex="-1" href="../controleur/Deconnexion_Controller.php?control=logout"> <i class="icon-off"></i> Déconnexion </a>
+             		</li>
+
+            </ul>
+             	</li>			 		
+         </ul>
+				
+				
           </div>
-          <p class="navbar-text pull-right">  <i class="icon-user"></i>  '.$AgentName.' <a href="../controleur/Deconnexion_Controller.php?control=logout"> <button class=""><i class="icon-off"></i></button> </a> </p>
+          
           
         </div>
       </div>
@@ -193,11 +214,33 @@ class Document{
                 </ul>
               </li>
 			<li class="">
-                <a href="#">Mon Profil</a>
+                <a href="Profil.php">Mon Profil</a>
               </li>
             </ul>
+					<ul class="nav pull-right">
+				<li class="dropdown">
+             		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">  <i class="icon-user"></i>  '.$AgentName.' <i class="caret"></i>  </a>
+              	 						
+			<ul class="dropdown-menu">
+             		<li>
+             		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
+             		</li>
+             		<li>
+             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		</li>
+             		<li class="divider"></li>
+             		<li>
+             		<a tabindex="-1" href="../controleur/Deconnexion_Controller.php?control=logout"> <i class="icon-off"></i> Déconnexion </a>
+             		</li>
+
+            </ul>
+             	</li>			 		
+         </ul>
+			
+			
+			
           </div>
-          <p class="navbar-text pull-right">  <i class="icon-user"></i>  '.$AgentName.' <a href="../controleur/Deconnexion_Controller.php?control=logout"> <button class=""><i class="icon-off"></i></button> </a> </p>
+         
           
         </div>
       </div>
@@ -211,7 +254,7 @@ class Document{
 	;
 				
 	break;
-			case 3: // level 3 pour le responsable pédagogique
+			case 3: // level 3 pour le Chef de Département
 			echo '  <header>
 
 <div class="navbar  navbar-fixed-top">
@@ -237,23 +280,47 @@ class Document{
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="3">Mes Enseignants <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href=""><i class="icon-wrench"></i> gérer Enseignants</a>
+                    <a href="#"><i class="icon-wrench"></i> gérer Enseignants</a>
                   </li>
                   <li>
-                    <a href=""><i class="icon-search"></i> Lister Enseignants</a>
+                    <a href="#"><i class="icon-list"></i> Lister Enseignants</a>
                   </li>
+					
                 </ul>
               </li>
 
 					
 					
                <li class="">
-                <a href="#">Mon Profil</a>
+                <a href="Profil.php">Mon Profil</a>
               </li> 
 
             </ul>
+					
+		<ul class="nav pull-right">
+				<li class="dropdown">
+             		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">  <i class="icon-user"></i>  '.$AgentName.' <i class="caret"></i>  </a>
+              	 						
+			<ul class="dropdown-menu">
+             		<li>
+             		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
+             		</li>
+             		<li>
+             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		</li>
+             		<li class="divider"></li>
+             		<li>
+             		<a tabindex="-1" href="../controleur/Deconnexion_Controller.php?control=logout"> <i class="icon-off"></i> Déconnexion </a>
+             		</li>
+
+            </ul>
+             	</li>			 		
+         </ul>
+					
+
+					
           </div>
-          <p class="navbar-text pull-right">  <i class="icon-user"></i>  '.$AgentName.' <a href="../controleur/Deconnexion_Controller.php?control=logout"> <button class=""><i class="icon-off"></i></button> </a> </p>
+          					
           
         </div>
       </div>
@@ -295,22 +362,44 @@ class Document{
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="3">Mes Enseignants <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href=""><i class="icon-wrench"></i> gérer Enseignants</a>
+                    <a href="Enseignant.php"><i class="icon-wrench"></i> gérer Enseignants</a>
                   </li>
                   <li>
-                    <a href=""><i class="icon-search"></i> Lister Enseignants</a>
+                    <a href="#"><i class="icon-list"></i> Lister Enseignants</a>
+                  </li>
+					<li>
+                    <a href="Enseignant_Externe.php"><i class="icon-globe"></i> Enseignants Externes</a>
                   </li>
                 </ul>
               </li>
 
                <li class="">
-                <a href="#">Mon Profil</a>
+                <a href="Profil.php">Mon Profil</a>
               </li> 
 
             </ul>
+			<ul class="nav pull-right">
+				<li class="dropdown">
+             		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">  <i class="icon-user"></i>  '.$AgentName.' <i class="caret"></i>  </a>
+              	 						
+				<ul class="dropdown-menu">
+             		<li>
+             		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
+             		</li>
+             		<li>
+             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		</li>
+             		<li class="divider"></li>
+             		<li>
+             		<a tabindex="-1" href="../controleur/Deconnexion_Controller.php?control=logout"> <i class="icon-off"></i> Déconnexion </a>
+             		</li>
+
+            </ul>
+             	</li>			 		
+         </ul>
+						
+						
           </div>
-          <p class="navbar-text pull-right">  <i class="icon-user"></i>  '.$AgentName.' <a href="../controleur/Deconnexion_Controller.php?control=logout"> <button class=""><i class="icon-off"></i></button> </a> </p>
-          
         </div>
       </div>
     </div>
@@ -324,6 +413,40 @@ class Document{
 					
 					;
 				break;
+				case 5: // Responsable de Classe
+					echo '<header>
+					
+<div class="navbar  navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li>
+                <img class="" src="../MonImage/logoIntraESP.png" width="100px">
+              </li>
+					
+					
+					
+               <li class="">
+ 					               
+              </li>
+					
+            </ul>
+          </div>
+          
+					<h2 class="text-center">CAHIER DE TEXTE</h2>
+					
+					
+        </div>
+      </div>
+    </div>
+    </header>
+    <br>
+    <br>
+  ';
+					;
+						
+				break;	
 			default:
 				echo '<header>
 
@@ -339,7 +462,7 @@ class Document{
               
 
                <li class="">
-                <a href="#">Mon Profil</a>
+                <a href="Profil.php">Mon Profil</a>
               </li> 
 
             </ul>
