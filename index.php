@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Acceuil-IntraESP</title>
-	<meta charset="">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="MonCss/MonStyle.css" rel="stylesheet">
@@ -64,46 +64,42 @@
           <input type="checkbox" value="remember-me"> Se Souvenir de moi
         </label>
         <button class="btn btn-large btn-primary" type="submit">Se Connecter</button>
-        
-        
-        
+
         <h4 class="form-signin-heading">Demo Access</h4>
         <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
-		  <ul class="nav nav-tabs">
-		    <li class="active"><a href="#tab1" data-toggle="tab">Directeur</a></li>
-		    <li><a href="#tab2" data-toggle="tab">Chef de Département</a></li>
-		    <li><a href="#tab3" data-toggle="tab">Responsable Pédagogique</a></li>
-		    <li><a href="#tab4" data-toggle="tab">Responsable Classe</a></li>
-		  </ul>
-		  <div class="tab-content">
-		    <div class="tab-pane active" id="tab1">
-		      <label>Login:</label> <strong>M.ADJ</strong> 
-		      <label>Password:</label><strong>passer</strong>
-		    </div>
-		    <div class="tab-pane" id="tab2">
-		      <label>Login:</label><strong> S.LO</strong>
-		      <label>Password:</label><strong>passer</strong>
-		    </div>
-		    <div class="tab-pane" id="tab3">
-		      <label>Login:</label><strong> R.FAYE</strong>
-		      <label>Password:</label><strong>passer</strong>
-		    </div>
-		    <div class="tab-pane" id="tab4">
-		      <label>Lien:<a href="ResponsableClasse.php">ICI</a></label>
-		      <label>Password:</label><strong>passer</strong>
-		    </div>
-		  </div>
-		</div>
-        
-          
-		        
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Directeur</a></li>
+        <li><a href="#tab2" data-toggle="tab">Chef de DÃ©partement</a></li>
+        <li><a href="#tab3" data-toggle="tab">Responsable PÃ©dagogique</a></li>
+        <li><a href="#tab4" data-toggle="tab">Responsable Classe</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+          <label>Login:</label> <strong>M.ADJ</strong> 
+          <label>Password:</label><strong>passer</strong>
+        </div>
+        <div class="tab-pane" id="tab2">
+          <label>Login:</label><strong> S.LO</strong>
+          <label>Password:</label><strong>passer</strong>
+        </div>
+        <div class="tab-pane" id="tab3">
+          <label>Login:</label><strong> R.FAYE</strong>
+          <label>Password:</label><strong>passer</strong>
+        </div>
+        <div class="tab-pane" id="tab4">
+          <label>Lien:<a href="ResponsableClasse.php">ICI</a></label>
+          <label>Password:</label><strong>passer</strong>
+        </div>
+      </div>
+    </div>
+
+
+
       </form>
-		
+
     </div> <!-- /container -->
 
-
-    
-    <center>
+<center>
  <div id="footer">
   <div class="container">
     <p class="muted credit"> Copyright IntraESP 2014 By Tobin Frost @ Supadev </p>  

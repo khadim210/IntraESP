@@ -44,7 +44,7 @@ abstract class Controller {
 
 		$this->action=$_GET['control']; 
 		$this->execute();
-		$url='http://'.$_SERVER['HTTP_HOST'].'/INTRAESP/'.$this->repertoire.'/'.$this->destination;
+		$url='http://'.$_SERVER['HTTP_HOST'].'/Application INTRAESP 2.0/'.$this->repertoire.'/'.$this->destination;
 		if (count($this->repost_data)==0) header('Location: '.$url);
 		else $this->repost($url);
 
