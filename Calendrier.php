@@ -1,87 +1,4 @@
-<?php 
 
-session_start();
-
-include('Connect.php');
-
-include('MonFrameWork.php');
-
-
-
-
-?>
-
-<html>
-<head>
-  <title>Gestion Formation-IntraESP</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="MonCss/MonStyle.css" rel="stylesheet">
-    <link href="MonCss/fullcalendar.css" rel="stylesheet">
-    
- 
-</head>
-<body>
-  <header>
-
-<div class="navbar  navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li>
-                <img class="" src="MonImage/logoIntraESP.png" width="100px">
-              </li>
-              
-              <li class="">
-                <a href="TableauDebord.php">Tableau de Bord</a>
-              </li>
-              <li class="">
-                <a href="GestionDepartement.php">ParamÃ¨trage</a>
-              </li>
-              <li class="dropdown active">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="3">Outils <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href=""><i class="icon-calendar"></i> Calendrier</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="3">Agents <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href=""><i class="icon-user"></i> Liste des Agents</a>
-                  </li>
-                  <li>
-                    <a href=""><i class="icon-search"></i> Recherche</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <p class="navbar-text pull-right">  <i class="icon-user"></i>  Mr/Madame <button class=""><i class="icon-off"></i></button> </p>
-          
-        </div>
-      </div>
-    </div>
-    </header>
-    <br>
-    <br>
-    
-
-    <div class="container">
-    <div class="alert alert-success">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Bravo!</strong>
-        Bienvenue , vous vous Ãªtes authentifier avec succÃ©s !
-    </div>
-
-    </div>
-    
-    <br>
-        
     
 
 <div class="container-fluid">
@@ -91,7 +8,7 @@ include('MonFrameWork.php');
       
 
 
-      <div class="hero-unit">
+
 
 <div class="block"> <!-- Debut  Block -->
   <div class="navbar navbar-inner block-header">
@@ -104,22 +21,22 @@ include('MonFrameWork.php');
       <div class="block-content collapse in">
         <div class="span2">
           <div id="external-events">
-            <h5> EvÃ©nements</h5>
-                                    <div class='external-event'>EvÃ©nement1</div>
-                                    <div class='external-event'>EvÃ©nement2</div>
-                                    <div class='external-event'>EvÃ©nement3</div>
-                                    <div class='external-event'>EvÃ©nement4</div>
-                                    <div class='external-event'>EvÃ©nement5</div>
-                                    <div class='external-event'>EvÃ©nement6</div>
-                                    <div class='external-event'>EvÃ©nement7</div>
-                                    <div class='external-event'>EvÃ©nement8</div>
-                                    <div class='external-event'>EvÃ©nement9</div>
-                                    <div class='external-event'>EvÃ©nement10</div>
-                                    <div class='external-event'>EvÃ©nement11</div>
-                                    <div class='external-event'>EvÃ©nement12</div>
-                                    <div class='external-event'>EvÃ©nement13</div>
-                                    <div class='external-event'>EvÃ©nement14</div>
-                                    <div class='external-event'>EvÃ©nement15</div>
+            <h5> Evénements</h5>
+                                    <div class='external-event'>Evénements1</div>
+                                    <div class='external-event'>Evénements2</div>
+                                    <div class='external-event'>Evénements3</div>
+                                    <div class='external-event'>Evénements4</div>
+                                    <div class='external-event'>Evénements5</div>
+                                    <div class='external-event'>Evénements6</div>
+                                    <div class='external-event'>Evénements7</div>
+                                    <div class='external-event'>Evénements8</div>
+                                    <div class='external-event'>Evénements9</div>
+                                    <div class='external-event'>Evénements10</div>
+                                    <div class='external-event'>Evénements11</div>
+                                    <div class='external-event'>Evénements12</div>
+                                    <div class='external-event'>Evénements13</div>
+                                    <div class='external-event'>Evénements14</div>
+                                    <div class='external-event'>Evénements15</div>
                                     <p>
                                     <input type='checkbox' id='drop-remove' /> <label for='drop-remove'>Annuler Affectations</label>
                                     </p>
@@ -138,71 +55,10 @@ include('MonFrameWork.php');
 
     </div> <!-- hero unit -->
   <!-- Fin  Block -->
-</div>
+
     </div> <!-- fin span9-->
 
   </div>
 </div>
 
       
-<center>
- <div id="footer">
-  <div class="container">
-    <p class="muted credit"> Copyright IntraESP 2014 By Tobin Frost @ Supadev </p>
-  </div>
-</div>
-</center>
-<script src='MonJs/moment.min.js'></script>
-<script src='MonJs/jquery.min.js'></script>
-<script src='MonJs/jquery-ui.custom.min.js'></script>
-<script src='MonJs/fullcalendar.js'></script>
-<script src='MonJs/lang-all.js'></script>
-<script src='MonJs/MaConfigurationCalendrier.js'></script>
-
-<script src="MonJs/jquery.metisMenu.js"></script>
-<script src="MonJs/MonJs.js"></script>
-<script type="text/javascript">
-/* initialize the calendar
-        -----------------------------------------------------------------*/
-        
-        $('#calendrier').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true,
-            lang:'fr',
-            events:[
-              <?php include ('Event.php'); ?> 
-            ]                 
-           
-            ,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
-            drop: function(date) { // this function is called when something is dropped
-            
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject');
-                
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
-                
-                // assign it the date that was reported
-                copiedEventObject.start = date;
-                
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendrier').fullCalendar('renderEvent', copiedEventObject, true);
-                
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-                
-            }
-        });
-<?php  ?>
-</script>
-</body>
-</html>
