@@ -84,9 +84,18 @@ protected function execute(){
 	
 	$classe = "'".$classe."'";
 	
+	$condition = "classe=".$classe."";
+	
+	$idRole = $r->RequestFetched($condition,'idRole');
+	
+	if (isset($idRole)) {
+		$this->destination = 'Affectation_ResponsablePedagogique.php?mission=fail';
+	}else{
+	
 	$values = "".$idagent.",4,".$classe."";
 	
 	$r->insert('idAgent,idTypeRole,classe',$values);
+	}
 			
 		break;
 		
@@ -120,9 +129,9 @@ protected function execute(){
 		
 	
 			
-	$values = "".$idMatiere.",".$idAgent.",".$CM.",".$TP.",".$TD;
+	$values = "".$idMatiere.",".$idAgent.",".$CM.",".$TP.",".$TD.",".$CM.",".$TP.",".$TD;
 
-	$af->insert('idMatiere,idAgent,CM,TP,TD',$values);
+	$af->insert('idMatiere,idAgent,CM,TP,TD,CMAff,TPAff,TDAff',$values);
 	
 //	$r->insert('idAgent,idTypeRole,classe',$values);
 				
@@ -162,12 +171,17 @@ protected function execute(){
 	
 	$TDset = $_POST['TDAffecte']-$_POST['TD'];
 	
-		
+	$CMEff = $_POST['CMAffecte']+$CMset;
+	
+	$TPEff = $_POST['TPAffecte']+$TPset;
+	
+	$TDEff = $_POST['TDAffecte']+$TDset;
+	
 	if (isset($_POST['action'])) {
 		
 		if ($_POST['action']=='update') {
 			
-			$setting = "CM =".$CM.",TP =".$TP.",TD =".$TD."";
+			$setting = "CM =".$CM.",TP =".$TP.",TD =".$TD.",CMEff =".$CMEff.",TPEff =".$TPEff.",TDEff =".$TDEff;
 			
 			$condition = "idAffectation =".$idAffectation."";
 			
@@ -192,8 +206,22 @@ protected function execute(){
 		
 	}
 					
-		break;		
+		break;	
+
+	case 'Responsabilite':
 		
+		if (isset($_POST['idRole'])) {
+
+			$idRole =$_POST['idRole']; 
+			
+			$condition = "idRole =".$idRole."";
+				
+			$r->delete($condition);
+				
+			$this->destination = 'Responsabilite.php?demission=success';
+		}
+		
+	break;
 		
 		default:
 			;

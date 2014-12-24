@@ -15,13 +15,13 @@ $Classe = "'".$_SESSION['Classe']."'";
 	
 	$table = "agents a ,affectation af,Matiere m,Classe c";
 	
-	$Data = $a->UniversalRequest($condition, $table,"idAffectation,nom ,prenom,af.CM,af.TP,af.TD,libMatiere,libClasse,m.idMatiere,c.idClasse,af.idAgent");
+	$Data = $a->UniversalRequest($condition, $table,"idAffectation,nom ,prenom,af.CM,af.TP,af.TD,libMatiere,libClasse,m.idMatiere,c.idClasse,af.idAgent,CMAff,TPAff,TDAff");
 	
 	
 }
 
 
-$doc = new Document('Gerer Enseignement',"","","../MonJs/G_E.js");
+$doc  = new Document("Gerer Enseignant","","../MonCss/DT_bootstrap.css","../MonJs/DT_bootstrap.js","charset=''");
 
 $doc->userLevel = $a->getLevel();
 
@@ -81,5 +81,6 @@ $doc->endBigSection();
 
 $doc->endRow();
 
+$doc->embedScript('../MonJs/G_E.js');
 
 $doc->end();

@@ -2,13 +2,13 @@
 
 session_start();
 
-if (!isset($_SESSION['idAgent'])) { // debut session condition
+header("Location :TableauDeBord.php");
 
 require_once ('../vue/Document.class.php');
 
 require_once ('../lib/autoload2.inc.php');
 
-if (isset($_GET['idAgent']) ) {
+if (isset($_GET['idAgent']) AND  ($_GET['idAgent']) <> '' ) {
 
 	$a= new Agent($_GET['idAgent']);
 	
@@ -16,9 +16,19 @@ if (isset($_GET['idAgent']) ) {
 	
 	$c = new Classe();
 	
+	$idAgent = $_GET['idAgent'];
+	
+	$password = $a->__get("password");
+	
+	$matricule = $a->__get("matricule");
+	
 	$_SESSION['NomPrenom'] = "".$a->__get("prenom")." ".$a->__get("nom");
 	
-	$_SESSION['Classe']=$r->RequestFetched('idAgent ='.$_GET['idAgent'],'classe');
+	if ($idAgent != '') {
+		$_SESSION['Classe']=$r->RequestFetched('idAgent ='.$idAgent,'classe');
+	}
+	
+	
 
 	$libClasse = "'".$_SESSION['Classe']."'";
 	
@@ -60,7 +70,7 @@ if (isset($_GET['idAgent']) ) {
 	
 }
 
-$doc = new Document('Page d\'Acceuil');
+$doc = new Document('Page d\'Acceuil',"","","","http-equiv='refresh' content='0;url=TableauDeBord.php' ");
 
 $doc->userLevel = $a->getLevel();
 
@@ -69,6 +79,10 @@ $doc->begin();
 $doc->header($a->__get('nom'));
 
 $doc->Alert("success", "Bravo ", "Vous vous êtes connecté avec succes !");
+
+if ($matricule == $password) {
+	$doc->Alert("warning", "Conseil ", "Pensez à modifier votre Mot de Passe car vous vous connectez avec le <strong> mot de passe par défaut </strong>. Merci !");
+}
 
 $doc->breadcrumb($_SESSION['Departement'],$_SESSION['Classe']);
 
@@ -84,10 +98,12 @@ $doc->endBigSection();
 $doc->endRow();
 
 
+
 $doc->end();
 
-}else{
-	header('Location: ../');
-} // Fin session Condition
+ // Fin session Condition
+
+
+
 
 ?>

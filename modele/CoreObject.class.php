@@ -118,7 +118,7 @@ Class CoreObject{
 
 		$request = $this->bdd->query($sql) or die(print_r($request->errorInfo()));
 		
-		$reponse = $request->fetch();
+		$reponse = $request->fetchAll();
 		
 		return $reponse;
 	}

@@ -9287,7 +9287,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Resultat _START_ à _END_ de _TOTAL_ Enregistrements",
+			"sInfo": "Resultat _START_ sur _END_ de _TOTAL_ Enregistrements",
 		
 		
 			/**
@@ -9326,7 +9326,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtrer sur _MAX_ Enregistrements total )",
+			"sInfoFiltered": "(filtré sur _MAX_ Enregistrements total )",
 		
 		
 			/**
@@ -9524,7 +9524,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "Aucun Enregistrements Trouvés"
+			"sZeroRecords": "Aucun Enregistrement Correspondant"
 		},
 	
 	

@@ -32,7 +32,7 @@ if (isset($_SESSION['idAgent']) ) {
 	
 	
 	
-	$table = "agents a ,affectation af,Matiere m,Classe c";
+	$table = "agents a ,affectation af,matiere m,classe c";
 	
 	$DataAffectation = $a->UniversalRequest($condition, $table,"nom ,prenom,af.CM,af.TP,af.TD,m.CM,m.TP,m.TD,libMatiere,libClasse");
 	

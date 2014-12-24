@@ -31,7 +31,7 @@ class Document{
 		echo '<html>
 <head>
 	<title>'.$this->title.'</title>
-	<meta '.$meta.'>
+	<meta '.$meta.'/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../MonCss/MonStyle.css" rel="stylesheet">
@@ -63,16 +63,9 @@ class Document{
 
 	// commencement du <body>
 
-	public function begin($level=0)
+	public function begin()
 	{
-		switch ($level){
-			case 1 :
-
-			echo "";
-				
-				;
-			break;
-		}
+			echo '<body>';
 	}
 
 	// Retourne le <header>
@@ -152,7 +145,7 @@ class Document{
              		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
              		</li>
              		<li>
-             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		<a tabindex="-1" href="ConfigurationProfil.php"> <i class="icon-cog"></i> Paramètre</a>
              		</li>
              		<li class="divider"></li>
              		<li>
@@ -226,7 +219,7 @@ class Document{
              		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
              		</li>
              		<li>
-             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		<a tabindex="-1" href="ConfigurationProfil.php"> <i class="icon-cog"></i> Paramètre</a>
              		</li>
              		<li class="divider"></li>
              		<li>
@@ -306,7 +299,7 @@ class Document{
              		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
              		</li>
              		<li>
-             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		<a tabindex="-1" href="ConfigurationProfil.php"> <i class="icon-cog"></i> Paramètre</a>
              		</li>
              		<li class="divider"></li>
              		<li>
@@ -387,7 +380,7 @@ class Document{
              		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
              		</li>
              		<li>
-             		<a tabindex="-1" href="#"> <i class="icon-cog"></i> Paramètrage</a>
+             		<a tabindex="-1" href="ConfigurationProfil.php"> <i class="icon-cog"></i> Paramètre</a>
              		</li>
              		<li class="divider"></li>
              		<li>
@@ -461,13 +454,31 @@ class Document{
               
               
 
-               <li class="">
-                <a href="Profil.php">Mon Profil</a>
-              </li> 
+                
 
             </ul>
+<ul class="nav pull-right">
+				<li class="dropdown">
+             		<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">  <i class="icon-user"></i>  '.$AgentName.' <i class="caret"></i>  </a>
+              	 						
+				<ul class="dropdown-menu">
+             		<li>
+             		<a tabindex="-1" href="Profil.php"><i class="icon-user"></i> Profile</a>
+             		</li>
+             		<li>
+             		<a tabindex="-1" href="ConfigurationProfil.php"> <i class="icon-cog"></i> Paramètre</a>
+             		</li>
+             		<li class="divider"></li>
+             		<li>
+             		<a tabindex="-1" href="../controleur/Deconnexion_Controller.php?control=logout"> <i class="icon-off"></i> Déconnexion </a>
+             		</li>
+
+            </ul>
+             	</li>			 		
+         </ul>
+						
           </div>
-          <p class="navbar-text pull-right">  <i class="icon-user"></i>  '.$AgentName.' <a href="../controleur/Deconnexion_Controller.php?control=logout"> <button class=""><i class="icon-off"></i></button> </a> </p>
+          
 						
                   
           
@@ -502,10 +513,11 @@ class Document{
             <i class="icon-chevron-right"></i> Agents
             </a>
             <ul class="" style="height:0px;" >
-              <li ><a href="../ConfigPERS.php?status=permanent">P.E.R.S (Permanent)</a></li>
-              <li ><a href="../ConfigPERS.php?status=vacataire">P.E.R.S (Vacataire)</a></li>
-              <li><a href="../ConfigPATS.php?status=permanent">P.A.T.S (Permanent)</a></li>
-              <li><a href="../ConfigPATS.php?status=vacataire">P.A.T.S (Vacataire)</a></li>
+              <li ><a href="ConfigPERS.php?status=permanent">P.E.R.S (Permanent)</a></li>
+              <li ><a href="ConfigPERS.php?status=vacataire">P.E.R.S (Vacataire)</a></li>
+              <li><a href="ConfigPATS.php?status=permanent">P.A.T.S (Permanent)</a></li>
+              <li><a href="ConfigPATS.php?status=vacataire">P.A.T.S (Vacataire)</a></li>
+			  <li><a href="Responsabilite.php">Responsabilité</a></li>
             </ul>
           </li>
           <li class="">
@@ -526,17 +538,17 @@ class Document{
             </a>
                       <ul class="">
                         <li>
-                          <a href="../GestionDepartement.php">
-                          Confuration Départements 
+                          <a href="GestionDepartement.php">
+                          Configuration Départements 
                       </a>
                         </li>
                         <li>
-                          <a href="">
+                          <a href="#">
                           Programmes
                       </a>
                         </li>
                         <li>
-                          <a href="">
+                          <a href="#">
                        Matières
                       </a>
                         </li>
@@ -620,10 +632,10 @@ class Document{
             <i class="icon-chevron-right"></i> Agents
             </a>
             <ul class="" style="height:0px;" >
-              <li ><a href="../ConfigPERS.php?status=permanent">P.E.R.S (Permanent)</a></li>
-              <li ><a href="../ConfigPERS.php?status=vacataire">P.E.R.S (Vacataire)</a></li>
-              <li><a href="../ConfigPATS.php?status=permanent">P.A.T.S (Permanent)</a></li>
-              <li><a href="../ConfigPATS.php?status=vacataire">P.A.T.S (Vacataire)</a></li>
+              <li ><a href="ConfigPERS.php?status=permanent">P.E.R.S (Permanent)</a></li>
+              <li ><a href="ConfigPERS.php?status=vacataire">P.E.R.S (Vacataire)</a></li>
+              <li><a href="ConfigPATS.php?status=permanent">P.A.T.S (Permanent)</a></li>
+              <li><a href="ConfigPATS.php?status=vacataire">P.A.T.S (Vacataire)</a></li>
             </ul>
           </li>
           <li class="">
@@ -644,17 +656,17 @@ class Document{
             </a>
                       <ul class="">
                         <li>
-                          <a href="../GestionDepartement.php">
-                          Confuration Départements 
+                          <a href="GestionDepartement.php">
+                          Configuration Départements 
                       </a>
                         </li>
                         <li>
-                          <a href="">
+                          <a href="#">
                           Programmes
                       </a>
                         </li>
                         <li>
-                          <a href="">
+                          <a href="#">
                        Matières
                       </a>
                         </li>
@@ -761,9 +773,24 @@ class Document{
     <p class="muted credit"> Copyright IntraESP 2014 By Tobin Frost @ Supadev </p>
   </div>
 </div>
-</center>';
+</center>
+		</body>
+</html>';
 	}
 	
+	public function beginScript(){
+		echo '<script>';
+	}
+	
+	public function endScript(){
+		echo '</script>';
+	}
+	
+	public function embedScript($src=''){
+		
+	echo '<script src="'.$src.'"></script>';
+		
+	}
 	
 public function beginSpan9() {
 

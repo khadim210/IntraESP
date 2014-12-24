@@ -36,7 +36,7 @@ for ($i=0; $i <count($Tab) ; $i++) {
   # code...
 echo '
             <tr>
-              <td>'.utf8_encode($Tab[$i]).'</td>
+              <td>'.($Tab[$i]).'</td>
               <td> <button class="btn btn-warning" data-toggle="modal" href="#Consulter'.$Structure.'" title="Consulter"> <i class="icon-search" ></i> </button></td>
             </tr>              
 ';
@@ -93,7 +93,7 @@ for ($i=0; $i <count($Tab) ; $i++) {
   # code...
 echo '
             <tr>
-              <td>'.utf8_encode($Tab[$i]).'</td>
+              <td>'.($Tab[$i]).'</td>
               <td> <button class="btn btn-warning" data-toggle="modal" href="#Consulter'.$Structure.'" title="Consulter"> <i class="icon-search" ></i> </button></td>
             </tr>              
 ';
@@ -190,7 +190,7 @@ function SetModal($Chaine,$Option,$Item)
                   <select id="NvItem'.$Chaine.'" >';
 
                     for ($i=0; $i <count($Item) ; $i++) { 
-                     echo '<option value="'.utf8_encode($Item[$i]).'">'.utf8_encode($Item[$i]).'</option>';                    
+                     echo '<option value="'.($Item[$i]).'">'.($Item[$i]).'</option>';                    
                   }
 
 echo '                  </select>
@@ -204,7 +204,7 @@ echo '                  </select>
 
           <div class="modal-footer">
             <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Mettre ├а jour</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Mettre ра jour</button>
     
           </form>
           </div>
@@ -236,7 +236,7 @@ echo '                  </select>
                   <select id="Deleted'.$Chaine.'" >';
 
                     for ($i=0; $i <count($Item) ; $i++) { 
-                     echo '<option value="'.utf8_encode($Item[$i]).'">'.utf8_encode($Item[$i]).'</option>';                    
+                     echo '<option value="'.($Item[$i]).'">'.($Item[$i]).'</option>';                    
                   }
 
 echo '                  </select>
@@ -287,15 +287,15 @@ echo '                  </select>
   function SetRow($tab1=null, $tab2=null, $tab3=null, $tab4=null, $tab5=null, $tab6=null){
 	
 	for ($i=0; $i <count($tab1) ; $i++) {
-	echo "<tr class=''>"."<td>".utf8_encode($tab1[$i])."</td>"."<td>".utf8_encode($tab2[$i])."</td>"."<td width='12%'>".utf8_encode($tab3[$i])."</td>"."<td>".utf8_encode($tab4[$i])."</td>"."<td width='15%'>".utf8_encode($tab5[$i])."</td>"."<td>".utf8_encode($tab6[$i])."</td>"."<td>".utf8_encode($tab7[$i])."</td></tr>";
+	echo "<tr class=''>"."<td>".($tab1[$i])."</td>"."<td>".($tab2[$i])."</td>"."<td width='12%'>".($tab3[$i])."</td>"."<td>".($tab4[$i])."</td>"."<td width='15%'>".($tab5[$i])."</td>"."<td>".($tab6[$i])."</td></tr>";
 	}
 	
   /////////////////// FONCTION BIGSETROW /////////////////////
   
-  function BigSetRow(array $tab){
+  function BigSetRows(array $tab1){
 	
-	for ($i=0; $i <count($tab) ; $i++) {
-	echo "<tr class=''>"."<td>".utf8_encode($tab[$i][0])."</td>"."<td>".utf8_encode($tab[$i][1])."</td>"."<td width='12%'>".utf8_encode($tab[$i][2])."</td>"."<td>".utf8_encode($tab[$i][3])."</td>"."<td width='15%'>".utf8_encode($tab[$i][4])."</td>"."<td>".utf8_encode($tab[$i][5])."</td>"."<td>".utf8_encode($tab[$i][6])."</td></tr>";
+	for ($i=0; $i <count($tab1) ; $i++) {
+	echo "<tr class=''>"."<td>".($tab1[$i][0])."</td>"."<td>".($tab1[$i][1])."</td>"."<td width='12%'>".($tab1[$i][2])."</td>"."<td>".($tab1[$i][3])."</td>"."<td width='15%'>".($tab1[$i][4])."</td>"."<td>".($tab1[$i][5])."</td>"."<td>".($tab1[$i][6])."</td></tr>";
 	}
 		
 	}

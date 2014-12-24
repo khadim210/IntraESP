@@ -7,6 +7,9 @@ require_once ('../vue/Document.class.php');
 
 require_once ('../lib/autoload2.inc.php');
 
+
+
+
 if (isset($_GET['idClasse']) ) {
 	
 	$a = new Agent();
@@ -49,7 +52,9 @@ if (isset($_GET['idClasse']) ) {
 	$Enseignant = array_merge($agent_per,$Agent_Ex);
 }
 
-	$doc  = new Document("Cahier de Texte");
+	
+
+	$doc  = new Document("Cahier de Texte","","","../monJs/AjaxLib.js");
 	
 	$doc->userLevel = 5; // 5 pour le Responsable de Classe
 	

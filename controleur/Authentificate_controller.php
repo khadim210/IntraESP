@@ -36,9 +36,7 @@ class Authentificate_controller extends Controller
 		switch ($control) {
 			case 'login':
 
-				$this->destination = "vue.php?";
 				
-				$this->repertoire = "vue";
 				
 				if (isset($_POST['login'])) {
 				
@@ -58,7 +56,7 @@ class Authentificate_controller extends Controller
 				
 				$prenom = $prenom.'%';
 				
-				$this->request ="prenom LIKE '".$prenom."' AND nom = '".$nom."' AND matricule= '".$this->motdepasse."'";
+				$this->request ="prenom LIKE '".$prenom."' AND nom = '".$nom."' AND password= '".$this->motdepasse."'";
 				
 				$reponse = $a->Request($this->request,'idAgent');
 				
@@ -66,13 +64,29 @@ class Authentificate_controller extends Controller
 				
 				$this->idAgent = $reponse[0]['idAgent'];
 				
+				if (isset($reponse[0]['idAgent'])) {
+					
+					$this->destination = "vue.php?";
+				
+					$this->repertoire = "vue";
+					
+					$this->repost_data['login'] = $this->login;
+					
+					$this->repost_data['motdepasse'] = $this->motdepasse;
+					
+					$this->repost_data['idAgent'] = $this->idAgent;
+					
+				}else{
+					
+					$this->destination="?auth=fail";
+		
+					$this->repertoire = ".";
+					$this->repost_data = null;
+				}
 				
 				
-				$this->repost_data['login'] = $this->login;
 				
-				$this->repost_data['motdepasse'] = $this->motdepasse;
 				
-				$this->repost_data['idAgent'] = $this->idAgent;
 				
 				
 				

@@ -53,22 +53,34 @@ $Calendrier = "/* initialize the calendar
 
 $doc  = new Document("Calendrier",$Calendrier,"../MonCss/fullcalendar.css","../MonJs/MaConfigurationCalendrier.js");
 
+
 $doc->userLevel = $a->getLevel();
 
 $doc->begin();
 
 $doc->header($a->__get("nom"));
 
+
 $doc->Alert("success", "Bravo", "Vous vous êtes connecté avec succès");
 
 $doc->beginRow();
 
-$doc->beginSection("Calendrier");
-
-$doc->Calendrier();
-
-$doc->endSection();
+include_once ('../Calendrier.php');
 
 $doc->endRow();
+
+$doc->embedScript("../MonJs/moment.min.js");
+$doc->embedScript("../MonJs/jquery.min.js");
+$doc->embedScript("../MonJs/jquery-ui.custom.min.js");
+$doc->embedScript("../MonJs/fullcalendar.js");
+$doc->embedScript("../MonJs/lang-all.js");
+$doc->embedScript("../MonJs/MaConfigurationCalendrier.js");
+$doc->embedScript("../MonJs/jquery.metisMenu.js");
+$doc->embedScript("../MonJs/MonJs.js");
+$doc->beginScript();
+
+echo $Calendrier;
+
+$doc->endScript();
 
 $doc->end();

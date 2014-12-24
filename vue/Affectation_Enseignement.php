@@ -235,7 +235,7 @@ if (isset($_GET['mission'])) {
 
 $doc->breadcrumb($_SESSION['Departement'],$_SESSION['Classe']);
 
-$doc->Alert("Danger", "Hint ", "Incrémenter pour augmenter l'heure affectée à un enseignant.");
+$doc->Alert("Danger", "Conseil ", "Incrémenter pour augmenter l'heure affectée à un enseignant.");
 
 $doc->beginRow();
 

@@ -29,7 +29,7 @@ if (isset($_SESSION['idAgent']) ) {
 	
 }
 
-$doc = new Document('Profil');
+$doc = new Document('Paramètre',"","","../MonJs/G_E.js");
 
 $doc->userLevel = $a->getLevel();
 
@@ -39,7 +39,11 @@ $doc->header($a->__get('nom'));
 
 $doc->Alert("success", "Bravo ", "Vous vous êtes connecté avec succes !");
 
-
+if (isset($_GET['SetPassword'])) {
+	if ($_GET['SetPassword'] == 'success') {
+		$doc->Alert("success", "Félicitation ", "Mot de Passe modifié avec succès !");
+	}
+}
 
 
 $doc->breadcrumb($_SESSION['Departement'],$_SESSION['Classe']);
@@ -49,10 +53,10 @@ $doc->beginRow();
 $doc->menu();
 
 
-$doc->beginBigSection("Mon Profil");
+$doc->beginBigSection("Paramètre");
 
 
-include_once ('../vue/Profil_vue.php');
+include_once ('../vue/ConfigurationProfil_vue.php');
 
 
 $ClasseFiltered = array_chunk($DataAffectation, 1) ;

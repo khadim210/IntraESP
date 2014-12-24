@@ -1,4 +1,4 @@
-<table class="table table-striped table-condensed ">
+<table id="" class="table table-striped table-condensed" cellpadding="0" cellspacing="-1" border="0" >
   <thead>
             <tr>
             	
@@ -6,12 +6,8 @@
               </th>
               <th>Prénom
               </th>
-              <th>CM
-              </th>
-              <th>TP
-              </th >
-              <th>TD
-              </th>
+              <th>Heures Prévisionnels
+              
               <th >Matière
               </th>
               <th>Classe
@@ -71,7 +67,7 @@
 
 
 		
-		<tr> <input class="action" name="action" type="hidden" value="">  <input name="idAffectation" type="hidden" value="<?php echo $Data[$i][0] ?>"><td > <?php echo $Data[$i][1] ?> </td> <td> <?php echo $Data[$i][2] ?>  </td> <td>  <input name="CM" type="number" value="<?php echo $Data[$i][3] ?>" style="width:28% ; height: 100%;">  </td> <td> <input name="TP" type="number" value="<?php echo $Data[$i][4] ?>" style="width:28% ; height: 100%;">  </td> <td> <input name="TD" type="number" value="<?php echo $Data[$i][5] ?>" style="width:28% ; height: 100%;">  </td> <td> <?php echo $Data[$i][6] ?> </td> <td> <?php echo $Data[$i][7] ?> </td> <td> <span class="demission"> <button id="demission" data-toggle="modal" data-target="#modalDemission_<?php echo $i ?>" class="btn btn-danger demission"> Démettre <i class="icon-remove-circle"></i> </button> </span> </td> <td> <span class="update"> <button  data-toggle="modal" data-target="#modalMiseAjour_<?php echo $i ?>" class="btn btn-warning"> Mettre à jour <i class="icon-wrench"></i> </button> </span> </td> </tr>
+		<tr> <input class="action" name="action" type="hidden" value="">  <input name="idAffectation" type="hidden" value="<?php echo $Data[$i][0] ?>"><td > <?php echo $Data[$i][1] ?> </td> <td> <?php echo $Data[$i][2] ?>  </td> <td> <strong>CM :</strong> <input name="CM" type="number" value="<?php echo $Data[$i][3] ?>" style="width:10% ; height: 100%;">  <strong> / <?php echo $Data[$i]['CMAff'] ?> </strong> 				<strong>TP :</strong>  <input name="TP" type="number" value="<?php echo $Data[$i][4] ?>" style="width:10% ; height: 100%;"> <strong> / <?php echo $Data[$i]['TPAff'] ?> </strong> 	<strong>TD :</strong>  <input name="TD" type="number" value="<?php echo $Data[$i][5] ?>" style="width:10% ; height: 100%;"> <strong> / <?php echo $Data[$i]['TDAff'] ?> </strong> </td> <td> <?php echo $Data[$i][6] ?> </td> <td> <?php echo $Data[$i][7] ?> </td> <td> <span class="demission"> <button id="demission" data-toggle="modal" data-target="#modalDemission_<?php echo $i ?>" class="btn btn-block btn-danger demission"> Démettre <i class="icon-remove-circle"></i> </button> </span> </td> <td> <span style="width: 100%;" class="update"> <button  data-toggle="modal" data-target="#modalMiseAjour_<?php echo $i ?>" class="btn btn-block btn-warning"> Mettre à jour <i class="icon-wrench"></i> </button> </span> </td> </tr>
 		
 		<input type="hidden" name="idMatiere" value="<?php echo $Data[$i][8] ?>">
 		<input type="hidden" name="idClasse" value="<?php echo $Data[$i][9] ?>">
@@ -84,3 +80,5 @@
 <?php } ?>
 
 </table>
+
+

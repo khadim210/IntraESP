@@ -111,7 +111,13 @@ $doc->header($a->__get('nom'));
 
 if (isset($_GET['mission'])) {
 	if ($_GET['mission'] == 'success') {
-		$doc->Alert("warning", "Félicitation ", "Affectation effectué avec succès !");
+		$doc->Alert("success", "Félicitation ", "Affectation effectué avec succès !");
+	}
+}
+
+if (isset($_GET['mission'])) {
+	if ($_GET['mission'] == 'fail') {
+		$doc->Alert("danger", "Oups ", "Responsable Pédagogique déjà affecté pour cette classe !");
 	}
 }
 

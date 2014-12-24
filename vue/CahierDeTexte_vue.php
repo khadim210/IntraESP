@@ -12,11 +12,11 @@
     <th style="width: 5%;">Signature(Enseignant)</th>
   </tr>
   <tr>
-    <td><select class="transparent" name="idMatiere" style="width: 180px;">
+    <td><select id="Matiere" class="transparent" name="idMatiere" style="width: 180px;" onchange="loadProfessor(this.value)">
     			
     		<?php for ($i = 0; $i < count($MatiereData[0]); $i++) { ?>
     			
-    			<option value = <?php echo $MatiereData[0][$i]['idMatiere'] ?> > <?php echo $MatiereData[0][$i]['libMatiere'] ?> </option>
+    			<option value = '<?php echo $MatiereData[0][$i]['idMatiere'] ?>' > <?php echo $MatiereData[0][$i]['libMatiere'] ?> </option>
     			
     		<?php } ?>
     			
@@ -75,9 +75,9 @@
     	</select>
     
     </td>
-    <td><textarea class="transparent" name="libelleCours" placeholder=" Exemple:Chapitre 1 :Introduction à l'Algorithme " style="width: 530px;" rows="10" cols="100"></textarea></td>
+    <td><textarea id="libCours" class="transparent" name="libelleCours" placeholder=" Exemple:Chapitre 1 :Introduction à l'Algorithme " style="width: 530px;" rows="10" cols="100"></textarea></td>
     <td> <ul class="inline"> <li> Enseignant : </li> <li> 
-    	<select class="transparent" name="idEnseignant">
+    	<select id="Professor" class="transparent" name="idEnseignant" onchange="loadMatiere(this.value)">
     	<?php for ($i = 0; $i < count($Enseignant); $i++) { ?>
     			
     			<option value = <?php echo $Enseignant[$i]['idAgent'] ?> > <?php echo $Enseignant[$i]['prenom'] ?> <?php echo $Enseignant[$i]['nom'] ?> </option>
